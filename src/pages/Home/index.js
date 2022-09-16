@@ -63,7 +63,7 @@ export default function Home({ navigation }) {
               fontFamily: fonts.secondary[400],
               fontSize: windowWidth / 28,
               color: colors.white
-            }}>Selamat datang, {user.nama_lengkap}</Text>
+            }}>Welcome, {user.nama_lengkap}</Text>
             <Text style={{
               fontFamily: fonts.secondary[600],
               fontSize: windowWidth / 20,
@@ -94,7 +94,7 @@ export default function Home({ navigation }) {
               fontFamily: fonts.secondary[600],
               fontSize: windowWidth / 30,
               color: colors.primary
-            }}>Keluar</Text>
+            }}>Logout</Text>
           </TouchableOpacity>
         </View>
 
@@ -116,7 +116,7 @@ export default function Home({ navigation }) {
             flex: 1,
 
           }}>
-            <MyInput onChangeText={x => {
+            <MyInput pakaiicon={false} onChangeText={x => {
               setData({
                 ...data,
                 a: x
@@ -144,13 +144,13 @@ export default function Home({ navigation }) {
                 setData({
                   ...data,
                   a: x,
-                  aHasil: parseFloat(aHasil).toFixed(4)
+                  aHasil: parseFloat(aHasil).toFixed(2)
                 })
 
 
 
               }
-            }} keyboardType='number-pad' value={data.a} iconname='create-outline' label="Viscometer Value at 40 °C (S)" />
+            }} keyboardType='number-pad' value={data.a} iconname='create-outline' label="Viscometer Value at 40 °C" label2="(S)" />
           </View>
           <View style={{
             flex: 1,
@@ -159,11 +159,15 @@ export default function Home({ navigation }) {
             alignItems: 'center'
           }}>
             <Text style={{
-              padding: 5,
               color: colors.primary,
               fontFamily: fonts.secondary[600],
               fontSize: windowWidth / 35
-            }}>Kinematic Viscosity at 40 °C (cSt)</Text>
+            }}>Kinematic Viscosity at 40 °C</Text>
+            <Text style={{
+              color: colors.primary,
+              fontFamily: fonts.secondary[600],
+              fontSize: windowWidth / 35
+            }}>(cSt)</Text>
             <View style={{
               backgroundColor: colors.tertiary,
               width: '100%',
@@ -194,7 +198,7 @@ export default function Home({ navigation }) {
             flex: 1,
 
           }}>
-            <MyInput value={data.b} onChangeText={x => {
+            <MyInput pakaiicon={false} value={data.b} onChangeText={x => {
               setData({
                 ...data,
                 b: x,
@@ -224,7 +228,7 @@ export default function Home({ navigation }) {
                 setData({
                   ...data,
                   b: x,
-                  bHasil: parseFloat(bHasil).toFixed(4)
+                  bHasil: parseFloat(bHasil).toFixed(2)
                 })
 
 
@@ -232,7 +236,7 @@ export default function Home({ navigation }) {
               } else {
                 console.warn('Result', 0)
               }
-            }} keyboardType='number-pad' iconname='create-outline' label="Viscometer Value at 100 °C (S)" />
+            }} keyboardType='number-pad' iconname='create-outline' label="Viscometer Value at 100 °C" label2="(S)" />
           </View>
           <View style={{
             flex: 1,
@@ -241,11 +245,16 @@ export default function Home({ navigation }) {
             alignItems: 'center'
           }}>
             <Text style={{
-              padding: 5,
+
               color: colors.primary,
               fontFamily: fonts.secondary[600],
               fontSize: windowWidth / 35
-            }}>Kinematic Viscosity at 100 °C (cSt)</Text>
+            }}>Kinematic Viscosity at 100 °C</Text>
+            <Text style={{
+              color: colors.primary,
+              fontFamily: fonts.secondary[600],
+              fontSize: windowWidth / 35
+            }}>(cSt)</Text>
             <View style={{
               backgroundColor: colors.tertiary,
               width: '100%',
@@ -292,13 +301,13 @@ export default function Home({ navigation }) {
 
             console.warn('antilog', parseFloat(antilog))
 
-            var ResultAll = ((Math.pow(10, (Math.log(parseFloat(antilog).toFixed(4)) - Math.log(data.aHasil)) / Math.log(data.bHasil)) - 1) / 0.00715) + 100;
+            var ResultAll = ((Math.pow(10, (Math.log(parseFloat(antilog).toFixed(2)) - Math.log(data.aHasil)) / Math.log(data.bHasil)) - 1) / 0.00715) + 100;
 
             console.warn('Result AA', ResultAll)
 
             setData({
               ...data,
-              data_index: parseFloat(ResultAll).toFixed(4)
+              data_index: parseFloat(ResultAll).toFixed(2)
             })
           }
         } />

@@ -57,92 +57,105 @@ export default function ({ navigation }) {
   }
 
   return (
-    <ScrollView style={{ padding: 10, flex: 1, backgroundColor: colors.white }}>
-      <View style={{ justifyContent: 'center', alignItems: 'center', paddingHorizontal: 5, paddingTop: 10 }}>
+    <>
+      <ScrollView style={{ padding: 10, flex: 1, backgroundColor: colors.white }}>
+        <View style={{ justifyContent: 'center', alignItems: 'center', paddingHorizontal: 5, paddingTop: 10 }}>
 
-        <View style={{
+          <View style={{
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}>
+
+
+            <Image
+              source={require('../../assets/logo.png')}
+              style={
+                {
+                  width: 200,
+                  height: 200,
+                  resizeMode: 'contain'
+                }
+              }
+            />
+
+
+            <Text style={{
+              marginTop: '2%',
+              color: colors.black,
+              fontFamily: fonts.secondary[600],
+              fontSize: windowWidth / 30,
+              marginBottom: 10,
+            }}>Viscosity Calculator User Login</Text>
+
+          </View>
+
+
+        </View>
+        <MyGap jarak={10} />
+        <View style={{ padding: 10, marginVertical: 10, flex: 1 }}>
+          <MyInput label="Email" onChangeText={val => setKirim({
+            ...kirim,
+            email: val
+          })}
+
+
+            iconname="mail" placeholder="enter your email" />
+          <MyGap jarak={20} />
+          <MyInput
+            onChangeText={val => setKirim({
+              ...kirim,
+              password: val
+            })}
+            secureTextEntry={true}
+            label="Password"
+            iconname="key"
+            placeholder="enter your password"
+          />
+          <MyGap jarak={40} />
+          {!loading &&
+
+            <>
+              <MyButton
+                onPress={masuk}
+                title="LOGIN"
+                warna={colors.primary}
+                Icons="log-in-outline"
+              />
+              <TouchableOpacity onPress={() => navigation.navigate('Register')} style={{
+                padding: 10,
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}><Text style={{
+                fontSize: windowWidth / 25,
+                fontFamily: fonts.primary[400],
+                textAlign: 'center',
+                color: colors.primary
+              }}>Don't have an account? Please register here</Text></TouchableOpacity>
+            </>
+
+          }
+        </View>
+        {loading && <View style={{
           flex: 1,
           justifyContent: 'center',
           alignItems: 'center'
         }}>
+          <ActivityIndicator color={colors.primary} size="large" />
+        </View>}
 
-
-          <Image
-            source={require('../../assets/logo.png')}
-            style={
-              {
-                width: 200,
-                height: 200,
-                resizeMode: 'contain'
-              }
-            }
-          />
-
-
-          <Text style={{
-            marginTop: '2%',
-            color: colors.white,
-            fontFamily: fonts.secondary[600],
-            fontSize: windowWidth / 30,
-            marginBottom: 10,
-          }}>Pendaftaran Konsultasi dan Edukasi Gigi Online Binong</Text>
-
-        </View>
-
-
+      </ScrollView>
+      <View>
+        <Text style={{
+          textAlign: 'center',
+          padding: 10,
+          backgroundColor: colors.white,
+          color: colors.black,
+          fontSize: windowWidth / 28,
+          fontFamily: fonts.primary[600],
+        }}>Copyright © 2022 | Laboratory of Pupuk Kaltim</Text>
       </View>
-      <MyGap jarak={10} />
-      <View style={{ padding: 10, marginVertical: 10, flex: 1 }}>
-        <MyInput label="Email" onChangeText={val => setKirim({
-          ...kirim,
-          email: val
-        })}
-
-
-          iconname="mail" placeholder="enter your email" />
-        <MyGap jarak={20} />
-        <MyInput
-          onChangeText={val => setKirim({
-            ...kirim,
-            password: val
-          })}
-          secureTextEntry={true}
-          label="Password"
-          iconname="key"
-          placeholder="enter your password"
-        />
-        <MyGap jarak={40} />
-        {!loading &&
-
-          <>
-            <MyButton
-              onPress={masuk}
-              title="LOGIN"
-              warna={colors.primary}
-              Icons="log-in-outline"
-            />
-            <TouchableOpacity onPress={() => navigation.navigate('Register')} style={{
-              padding: 10,
-              justifyContent: 'center',
-              alignItems: 'center'
-            }}><Text style={{
-              fontSize: windowWidth / 25,
-              fontFamily: fonts.primary[400],
-              textAlign: 'center',
-              color: colors.primary
-            }}>Don't have an account? Please register here</Text></TouchableOpacity>
-          </>
-
-        }
-      </View>
-      {loading && <View style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-      }}>
-        <ActivityIndicator color={colors.primary} size="large" />
-      </View>}
-    </ScrollView>
+    </>
   );
 }
 
