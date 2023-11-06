@@ -229,7 +229,16 @@ export default function Register({ navigation }) {
                     <ActivityIndicator color={colors.primary} size="large" />
                 </View>}
             </ScrollView>
-
+            <View>
+                <Text style={{
+                    textAlign: 'center',
+                    padding: 10,
+                    backgroundColor: colors.white,
+                    color: colors.black,
+                    fontSize: windowWidth / 28,
+                    fontFamily: fonts.primary[600],
+                }}>Copyright © 2022 | Laboratory of Pupuk Kaltim</Text>
+            </View>
         </ImageBackground>
     );
 }

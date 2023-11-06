@@ -337,7 +337,7 @@ export default function Home({ navigation }) {
               textAlign: 'center',
               fontFamily: fonts.secondary[600],
               fontSize: windowWidth / 15
-            }}>{data.data_index}</Text>
+            }}>{data.data_index == "NaN" ? "Out of Range" : data.data_index}</Text>
           </View>
         </View>
         <MyGap jarak={50} />
@@ -356,7 +356,16 @@ export default function Home({ navigation }) {
 
 
 
-
+      <View>
+        <Text style={{
+          textAlign: 'center',
+          padding: 10,
+          backgroundColor: colors.white,
+          color: colors.black,
+          fontSize: windowWidth / 28,
+          fontFamily: fonts.primary[600],
+        }}>Copyright © 2022 | Laboratory of Pupuk Kaltim</Text>
+      </View>
 
     </SafeAreaView >
   )
